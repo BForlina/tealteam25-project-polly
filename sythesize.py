@@ -21,4 +21,4 @@ audioStream = response['AudioStream']
 
 with open("example.mp3","wb") as f:
     f.write(audioStream.read())
-    print("polly output saved.")
+    print("Polly output saved.")

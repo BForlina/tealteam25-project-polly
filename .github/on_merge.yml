@@ -1,4 +1,4 @@
-name: Polly Pipeline (prod)
+name: Polly Pipeline (Prod)
 
 on:
   push:

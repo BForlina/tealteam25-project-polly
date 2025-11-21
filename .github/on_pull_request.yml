@@ -1,4 +1,4 @@
-name: Polly Pipeline (beta)
+name: Polly Pipeline (Beta)
 
 on:
   pull_request:

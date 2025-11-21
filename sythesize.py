@@ -10,7 +10,7 @@ polly = boto3.client('polly')
 
 response = polly.synthesize_speech(
     Engine='generative',
-    Outputformat='mp3',
+    OutputFormat='mp3',
     Text=text,
     VoiceId='Stephen'
 )

@@ -1,0 +1,29 @@
+name: Polly Pipeline (prod)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_polly:
+    runs-on: ubuntu-Latest
+    env:
+      S3_BUCKET: ${{ secrets.S3_BUCKET_PROD }}
+      S3_PATH: ${{ secrets.S3_PATH_PROD }}
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v3
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Convert txt to mp3 (beta)
+        run: |
+          pip install boto3 --upgrade
+          python sythesize.py
+          aws s3 cp example.mp3 s3://$S3_BUCKET/$S3_PATH
